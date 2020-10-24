@@ -162,7 +162,7 @@ namespace AutoMapper.Configuration
             ReverseMapExpression.TypeMapActions.Add(reverseTypeMap =>
             {
                 var newDestination = Parameter(reverseTypeMap.DestinationType, "destination");
-                var path = memberPath.Members.MemberAccesses(newDestination);
+                var path = memberPath.Members.Chain(newDestination);
                 var forPathLambda = Lambda(path, newDestination);
 
                 var pathMap = reverseTypeMap.FindOrCreatePathMapFor(forPathLambda, memberPath, reverseTypeMap);
